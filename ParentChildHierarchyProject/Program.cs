@@ -1,7 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using ParentChildHierarchyProject.Business;
 using ParentChildHierarchyProject.Data.Migrations;
 
@@ -16,10 +14,12 @@ employees.ForEach(GetHierarchy);
 void GetHierarchy(string employeName)
 {
     Console.WriteLine($"{employeName} descendants :  ");
+
     var hierarchy = service.GetDescendants(employeName, EmployeeDataProvider.GetHierarchy());
 
     // var hierarchy = service.GetAncestors(employeName, EmployeeDataProvider.GetHierarchy());
     // var hierarchy = service.GetFullHierarchy(employeName, EmployeeDataProvider.GetHierarchy());
+
     foreach (var employee in hierarchy)
     {
         Console.WriteLine($"{employee}");
